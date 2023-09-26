@@ -13,7 +13,7 @@ Things you may want to cover:
 
 * Configuration
     run `bundle install` and boot api with `rails s`
-    run `pg_ctl -D /home/drange/Desktop/SeniorProject/database start` to start your database.
+    run `pg_ctl -D <path to database file> start` to start your database.
 
 * Database creation
     run the psql command with the -U flag as whatever user owns your initialized database and the -d flag with the name of the database then run CREATE DATABASE job_scheduler.
@@ -30,3 +30,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* NOTE
+I would recommend aliasing the postgres start command

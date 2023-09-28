@@ -1,51 +1,51 @@
-class UsersController < ApplicationController
-    before_action :set_user, only: %i[ show update destroy ]
+class AccountsController < ApplicationController
+    before_action :set_Account, only: %i[ show update destroy ]
   
-    # GET /users
+    # GET /Accounts
     def index
-      @users = User.all
+      @Accounts = Account.all
   
-      render json: @users
+      render json: @Accounts
     end
   
-    # GET /users/1
+    # GET /Accounts/1
     def show
-      render json: @user
+      render json: @Account
     end
   
-    # POST /users
+    # POST /Accounts
     def create
-      @user = User.new(user_params)
+      @Account = Account.new(Account_params)
   
-      if @user.save
-        render json: @user, status: :created, location: @user
+      if @Account.save
+        render json: @Account, status: :created, location: @Account
       else
-        render json: @user.errors, status: :unprocessable_entity
+        render json: @Account.errors, status: :unprocessable_entity
       end
     end
   
-    # PATCH/PUT /users/1
+    # PATCH/PUT /Accounts/1
     def update
-      if @user.update(user_params)
-        render json: @user
+      if @Account.update(Account_params)
+        render json: @Account
       else
-        render json: @user.errors, status: :unprocessable_entity
+        render json: @Account.errors, status: :unprocessable_entity
       end
     end
   
-    # DELETE /users/1
+    # DELETE /Accounts/1
     def destroy
-      @user.destroy
+      @Account.destroy
     end
   
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_user
-        @user = User.find(params[:id])
+      def set_Account
+        @Account = Account.find(params[:id])
       end
   
       # Only allow a list of trusted parameters through.
-      def user_params
-        params.require(:user).permit(:name, :relationship)
+      def Account_params
+        params.require(:Account).permit(:name, :relationship)
       end
   end

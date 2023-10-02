@@ -22,6 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_222837) do
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.string "password"
+    t.string "email"
+    t.string "password_digest"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"

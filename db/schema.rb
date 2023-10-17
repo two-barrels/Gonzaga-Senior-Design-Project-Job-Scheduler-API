@@ -36,6 +36,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_032657) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer "space_id"
+    t.integer "account_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+  end
+  
   create_table "spaces", force: :cascade do |t|
     t.string "spaces_name"
     t.integer "floor_id"

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :posts
   get '/test', to: 'test#index'
   get '/users', to: 'users#index'
+  get '/spaces', to: 'spaces#index'
 end

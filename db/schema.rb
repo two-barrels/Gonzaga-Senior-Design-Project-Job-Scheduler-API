@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_032657) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_31_003211) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_032657) do
     t.string "password"
     t.string "email"
     t.string "password_digest"
+  end
+
+  create_table "floors", force: :cascade do |t|
+    t.integer "floor_number"
+    t.string "floor_name"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -33,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_032657) do
     t.integer "floor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "max_occupancy"
+    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|

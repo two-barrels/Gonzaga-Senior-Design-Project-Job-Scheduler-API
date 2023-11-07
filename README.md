@@ -11,7 +11,7 @@
     run `pg_ctl -D <path to database file> start` to start your database.
 
 * Database creation
-    `docker-compose -d up`
+    `docker-compose up -d`
     `rails db:create`
     `rails db:migrate`
     
@@ -26,4 +26,5 @@
 * Deployment instructions
 
 * NOTE
-I would recommend aliasing the postgres start command
+run the helpful_setup.sh file to create your env and add some command aliases
+`bash helpful_setup.sh`

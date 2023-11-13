@@ -19,11 +19,20 @@ development:
 development:
   adapter: postgresql
   database: job_scheduler
-  username: postgres
-  password: password
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   host: localhost
-  port: 5432
+  port: 6969
 
 production:
   <<: *default
   database: db/production.sqlite3
+
+test:
+  adapter: postgresql
+  database: rails_test
+  username: rails
+  password: password
+  host: localhost
+  port: 5432
+

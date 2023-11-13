@@ -1,9 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  relationship: MyString
+  jti: MyString
+  exp: 2023-10-01 15:28:37
 
-two:
-  name: MyString
-  relationship: MyString

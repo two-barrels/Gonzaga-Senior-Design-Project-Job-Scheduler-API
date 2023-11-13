@@ -34,7 +34,7 @@ class SpacesController < ApplicationController
     end
 
     def example
-      @spaces_and_floors = Floor.where(building_id=params[:id]).joins(:space)
+      @spaces_and_floors = Floor.where(params[:id]).joins(:space)
       render json: @spaces_and_floors
     end
   

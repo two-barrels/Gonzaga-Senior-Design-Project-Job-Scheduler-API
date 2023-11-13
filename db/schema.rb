@@ -10,60 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_032709) do
+ActiveRecord::Schema[7.0].define(version: 20_231_010_032_709) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "accounts", force: :cascade do |t|
-    t.string "name"
-    t.string "password"
-    t.string "email"
-    t.string "password_digest"
+  create_table 'accounts', force: :cascade do |t|
+    t.string 'name'
+    t.string 'password'
+    t.string 'email'
+    t.string 'password_digest'
   end
 
-  create_table "jwt_denylist", force: :cascade do |t|
-    t.string "jti", null: false
-    t.datetime "exp", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  create_table 'jwt_denylist', force: :cascade do |t|
+    t.string 'jti', null: false
+    t.datetime 'exp', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['jti'], name: 'index_jwt_denylist_on_jti'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'posts', force: :cascade do |t|
+    t.string 'title'
+    t.text 'body'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.integer "space_id"
-    t.integer "account_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'reservations', force: :cascade do |t|
+    t.integer 'space_id'
+    t.integer 'account_id'
+    t.datetime 'start_time'
+    t.datetime 'end_time'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "spaces", force: :cascade do |t|
-    t.string "spaces_name"
-    t.integer "floor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'spaces', force: :cascade do |t|
+    t.string 'spaces_name'
+    t.integer 'floor_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "relationship"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'relationship'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
-
 end

@@ -4,6 +4,3 @@ one:
   jti: MyString
   exp: 2023-10-01 15:28:37
 
-two:
-  jti: MyString
-  exp: 2023-10-01 15:28:37

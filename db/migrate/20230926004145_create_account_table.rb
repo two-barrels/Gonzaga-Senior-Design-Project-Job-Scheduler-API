@@ -6,6 +6,7 @@ class CreateAccountTable < ActiveRecord::Migration[7.0]
       t.string :email
     end
   end
+
   def down
     drop_table :accounts
   end

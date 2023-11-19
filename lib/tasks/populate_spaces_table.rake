@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :db do
   desc 'Load test space into the database'
   task populate_spaces_table: :environment do

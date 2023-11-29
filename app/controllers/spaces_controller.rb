@@ -9,7 +9,7 @@ class SpacesController < ApplicationController
   
     # GET /Spaces/1
     def show
-      @Spaces_floors = Space.select(:floor_id).distinct.order(:floor_id)
+      @Spaces_floors = Space.select(:floor_name).distinct.order(:floor_name)
       render json: @Spaces_floors 
     end
   
@@ -46,6 +46,6 @@ class SpacesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def spaces_params
-        params.permit(:spaces_name, :floor_id, :max_occupancy, :description)
+        params.permit(:spaces_name, :floor_name, :max_occupancy, :description)
       end
   end

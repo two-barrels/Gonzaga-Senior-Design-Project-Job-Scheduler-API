@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_234959) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_042425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_234959) do
 
   create_table "spaces", force: :cascade do |t|
     t.string "spaces_name"
-    t.integer "floor_id"
+    t.integer "floor_name"
     t.integer "max_occupancy"
     t.text "description"
   end

@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    before_action :set_Reservation, only: %i[ show update destroy ]
+    before_action :set_reservation, only: %i[ show update destroy ]
   
     # GET /Reservations
     def index
@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
   
     # POST /Reservations
     def create
-      @Reservation = Reservation.new(Reservation_params)
+      @Reservation = Reservation.new(reservation_params)
   
       if @Reservation.save
         render json: @Reservation, status: :created, location: @Reservation
@@ -40,12 +40,12 @@ class ReservationsController < ApplicationController
   
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_Reservation
+      def set_reservation
         @Reservation = Reservation.find(params[:id])
       end
   
       # Only allow a list of trusted parameters through.
-      def Reservation_params
-        params.require(:Reservation).permit(:name, :relationship)
+      def reservation_params
+        params.require(:reservation).permit(:space_id, :account_id, :start_time, :end_time)
       end
   end

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AssignmentTest < ActiveSupport::TestCase
-  should belong_to(:user)
-  should belong_to(:role)
+RSpec.describe Assignment, type: :model do
+  it{ should belong_to(:user)}
+  it{ should belong_to(:role)}
 end

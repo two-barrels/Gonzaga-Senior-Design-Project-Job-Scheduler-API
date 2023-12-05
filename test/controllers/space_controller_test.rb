@@ -12,7 +12,7 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy space' do
-    delete spaces_path, @Space1.id, as: :json
+    delete spaces_path(@Space1.id), as: :json
 
     assert_response :deleted
   end

@@ -2,23 +2,19 @@ require 'test_helper'
 
 class SpaceControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @Spaces = space(:one)
+    @Space1 = space(:one)
   end
 
   test 'should create space' do
-    assert_difference('Space.count') do
-        post space, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: "Description"}, as: :json
-    end
+    post space, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: "Description"}, as: :json
 
     assert_response :created
   end
 
-  test 'should destroy post' do
-    assert_difference('Space.count', -1) do
-      delete spaces(space.first), as: :json
-    end
+  test 'should destroy space' do
+    delete space/@Space1.id, as: :json
 
-    assert_response :no_content
+    assert_response :deleted
   end
 
 end

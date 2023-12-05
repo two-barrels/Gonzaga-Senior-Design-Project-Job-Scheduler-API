@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SpacesController < ApplicationController
-  before_action :set_Spaces, only: %i[update destroy]
+  before_action :set_spaces, only: %i[update destroy]
 
   # GET /Spaces
   def index
@@ -17,7 +17,7 @@ class SpacesController < ApplicationController
 
   # POST /Spaces
   def create
-    @Spaces = Spaces.new(Spaces_params)
+    @Spaces = Space.new(spaces_params)
 
     if @Spaces.save
       render json: @Spaces, status: :created, location: @Spaces
@@ -28,7 +28,7 @@ class SpacesController < ApplicationController
 
   # PATCH/PUT /Spaces/1
   def update
-    if @Spaces.update(Spaces_params)
+    if @Spaces.update(spaces_params)
       render json: @Spaces
     else
       render json: @Spaces.errors, status: :unprocessable_entity
@@ -43,12 +43,12 @@ class SpacesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_Spaces
-    @Spaces = Spaces.find(params[:id])
+  def set_spaces
+    @Spaces = Space.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
-  def Spaces_params
-    params.require(:Spaces).permit(:name, :relationship)
+  def spaces_params
+    params.permit(:spaces_name, :floor_id, :max_occupancy, :description)
   end
 end

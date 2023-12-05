@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :reservations
+  resources :spaces
   get '/test', to: 'test#index'
   get '/users', to: 'users#index'
   get '/spaces', to: 'spaces#index'

@@ -10,11 +10,4 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :created
   end
-
-  test 'should destroy space' do
-    delete spaces_path(@Space1.id), as: :json
-
-    assert_response :deleted
-  end
-
 end

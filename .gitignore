@@ -16,3 +16,4 @@
 /config/master.key
 /.env.yml
 /config/credentials.yml.enc
+/.vscode/*

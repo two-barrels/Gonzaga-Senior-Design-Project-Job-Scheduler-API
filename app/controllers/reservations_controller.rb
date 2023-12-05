@@ -1,20 +1,23 @@
 # frozen_string_literal: true
 
 class ReservationsController < ApplicationController
-  before_action :set_Reservation, only: %i[show update destroy]
+  before_action :set_reservation, only: %i[show update destroy]
 
+  # GET /Reservations
   def index
     @Reservations = Reservation.all
 
     render json: @Reservations
   end
 
+  # GET /Reservations/1
   def show
     render json: @Reservation
   end
 
+  # POST /Reservations
   def create
-    @Reservation = Reservation.new(Reservation_params)
+    @Reservation = Reservation.new(reservation_params)
 
     if @Reservation.save
       render json: @Reservation, status: :created, location: @Reservation
@@ -23,6 +26,7 @@ class ReservationsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /Reservations/1
   def update
     if @Reservation.update(Reservation_params)
       render json: @Reservation
@@ -31,17 +35,20 @@ class ReservationsController < ApplicationController
     end
   end
 
+  # DELETE /Reservations/1
   def destroy
     @Reservation.destroy
   end
 
   private
 
-  def set_Reservation
+  # Use callbacks to share common setup or constraints between actions.
+  def set_reservation
     @Reservation = Reservation.find(params[:id])
   end
 
-  def Reservation_params
-    params.require(:Reservation).permit(:name, :relationship)
+  # Only allow a list of trusted parameters through.
+  def reservation_params
+    params.require(:reservation).permit(:space_id, :account_id, :start_time, :end_time)
   end
 end

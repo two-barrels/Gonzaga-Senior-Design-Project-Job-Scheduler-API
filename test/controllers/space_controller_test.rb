@@ -15,7 +15,7 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy post' do
     assert_difference('Space.count', -1) do
-      delete spaces(@Spaces.first), as: :json
+      delete spaces(spaces.first), as: :json
     end
 
     assert_response :no_content

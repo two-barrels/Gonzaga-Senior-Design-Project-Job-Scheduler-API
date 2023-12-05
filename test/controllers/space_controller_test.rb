@@ -7,7 +7,7 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create space' do
     assert_difference('Space.count') do
-        post spaces/, params: { spaces_name: 'Room', floor_name: 1, max_occupancy: 1, description: "Description"}, as: :json
+        post spaces/, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: "Description"}, as: :json
     end
 
     assert_response :created

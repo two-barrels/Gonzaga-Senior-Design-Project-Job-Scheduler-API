@@ -7,7 +7,7 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create space' do
     assert_difference('Space.count') do
-        post spaces, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: "Description"}, as: :json
+        post space, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: "Description"}, as: :json
     end
 
     assert_response :created
@@ -15,7 +15,7 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy post' do
     assert_difference('Space.count', -1) do
-      delete spaces(spaces.first), as: :json
+      delete spaces(space.first), as: :json
     end
 
     assert_response :no_content

@@ -15,7 +15,7 @@ class MembersController < ApplicationController
 
   def get_user_from_token
     jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1],
-    ENV['jwt_secret_key']).first
+                             ENV['jwt_secret_key']).first
     user_id = jwt_payload['sub']
     User.find(user_id.to_s)
   end

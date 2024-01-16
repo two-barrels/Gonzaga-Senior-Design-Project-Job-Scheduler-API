@@ -4,17 +4,17 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = user(:one)
+    @user = users(:one)
   end
 
   test 'should get index' do
-    get users_url, as: :json
+    get user_url, as: :json
     assert_response :success
   end
 
   test 'should create user' do
     assert_difference('User.count') do
-      post users_url, params: { user: {} }, as: :json
+      post user_url, params: { user: {} }, as: :json
     end
 
     assert_response :created

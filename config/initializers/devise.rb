@@ -16,6 +16,7 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   config.jwt do |jwt| # Devise (?)
     jwt.expiration_time = 2.days.to_i
+    jwt.secret = ENV['jwt_secret_key'].to_s
   end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -311,4 +312,8 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.jwt_cookie do |jwt_cookie|
+    jwt_cookie.same_site = 'None'
+  end
 end

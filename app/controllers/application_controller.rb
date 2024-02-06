@@ -15,14 +15,16 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_user
-    auth_token = cookies[:access_token]
-    if auth_token || Rails.env.test?
-      @current_user = get_user_from_token
-      if !@current_user
+    if !Rails.env.test?
+      auth_token = cookies[:access_token]
+      if auth_token
+        @current_user = get_user_from_token
+        if !@current_user
+          render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
+        end
+      else
         render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
       end
-    else
-      render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
     end
   end
 end

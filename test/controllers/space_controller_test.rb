@@ -5,6 +5,7 @@ require 'test_helper'
 class SpaceControllerTest < ActionDispatch::IntegrationTest
   setup do
     @Space1 = space(:one)
+    @Space2 = space(:two)
   end
 
   test 'should create space' do
@@ -13,4 +14,17 @@ class SpaceControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :created
   end
+
+  # write GET requests
+
+  test "should get single space" do
+    get user_url(@Space1), as: :json
+    assert_response :success
+  end
+
+  test "should get single space" do
+    get user_url(@Space2), as: :json
+    assert_response :success
+  end
+
 end

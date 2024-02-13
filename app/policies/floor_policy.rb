@@ -1,26 +1,12 @@
 # frozen_string_literal: true
 
-class FloorPolicy
-  attr_reader :user
+class FloorPolicy < ApplicationPolicy
 
-  def initialize(user, post)
-    @user = user
-    @post = post
+  def index?
+    true
   end
 
-  def create?
-    user.admin?
-  end
-
-  def update?
-    user.admin?
-  end
-
-  def save?
-    user.admin?
-  end
-
-  def destroy?
-    user.admin?
+  def show?
+    true
   end
 end

@@ -1,26 +1,12 @@
 # frozen_string_literal: true
 
-class RolePolicy
-  attr_reader :user
+class RolePolicy < ApplicationPolicy
 
-  def initialize(user, post)
-    @user = user
-    @post = post
-  end
-
-  def create?
+  def index?
     user.admin?
   end
 
-  def update?
-    user.admin?
-  end
-
-  def save?
-    user.admin?
-  end
-
-  def destroy?
+  def show?
     user.admin?
   end
 end

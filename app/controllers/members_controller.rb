@@ -4,9 +4,6 @@ class MembersController < ApplicationController
 
   def show
     user = @current_user
-    render json: {
-      message: "If you see this, you're in!",
-      user:
-    }
+    render json:  user, include: :roles
   end
 end

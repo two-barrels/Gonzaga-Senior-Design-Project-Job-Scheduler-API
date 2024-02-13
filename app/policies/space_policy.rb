@@ -1,26 +1,13 @@
 # frozen_string_literal: true
 
-class SpacePolicy
-  attr_reader :user
+class SpacePolicy < ApplicationPolicy
 
-  def initialize(user, post)
-    @user = user
-    @post = post
+  def index?
+    true
   end
 
-  def create?
-    user.admin?
+  def show?
+    true
   end
 
-  def update?
-    user.admin?
-  end
-
-  def save?
-    user.admin?
-  end
-
-  def destroy?
-    user.admin?
-  end
 end

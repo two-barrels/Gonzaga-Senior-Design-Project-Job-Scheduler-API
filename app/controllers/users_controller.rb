@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if authorize @user.update(user_params)
+    authorize @user, :update?
+    if @user.update(user_params)
       render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -33,7 +34,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    authorize @user.destroy
+    authorize @user, :destroy?
+    @user.destroy
   end
 
   private

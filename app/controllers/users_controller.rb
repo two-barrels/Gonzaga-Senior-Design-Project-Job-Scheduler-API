@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
-    @users = User.all
+    @users = authorize User.all
 
     render json: @users
   end
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    authorize @user 
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize @user, :update?
     if @user.update(user_params)
       render json: @user
     else
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user, :destroy?
     @user.destroy
   end
 

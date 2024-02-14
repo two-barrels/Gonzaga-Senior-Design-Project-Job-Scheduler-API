@@ -12,6 +12,7 @@ class FloorsController < ApplicationController
 
   # DELETE /Spaces/1
   def destroy
+    authorize @Floors, :destroy?
     @Floors.destroy
   end
 

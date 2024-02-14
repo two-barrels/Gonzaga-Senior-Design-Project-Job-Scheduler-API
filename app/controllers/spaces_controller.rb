@@ -18,6 +18,7 @@ class SpacesController < ApplicationController
   # POST /Spaces
   def create
     @Spaces = Space.new(spaces_params)
+    authorize @Spaces, :create?
 
     if @Spaces.save
       render json: @Spaces, status: :created, location: @Spaces
@@ -28,6 +29,7 @@ class SpacesController < ApplicationController
 
   # PATCH/PUT /Spaces/1
   def update
+    authorize @Spaces, :update?
     if @Spaces.update(spaces_params)
       render json: @Spaces
     else
@@ -37,6 +39,7 @@ class SpacesController < ApplicationController
 
   # DELETE /Spaces/1
   def destroy
+    authorize @Spaces, :destroy?
     @Spaces.destroy
   end
 

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
     jwt_payload = JWT.decode(cookies[:access_token],
     ENV['jwt_secret_key'].to_s).first
     user_id = jwt_payload['sub']
-    User.find(user_id.to_s)
+    User.includes(:roles).find(user_id.to_s)
   end
 
   def authenticate_user

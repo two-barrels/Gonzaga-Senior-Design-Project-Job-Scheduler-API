@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class FloorPolicy < ApplicationPolicy
-
   def index?
     true
   end

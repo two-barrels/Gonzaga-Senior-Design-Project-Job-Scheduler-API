@@ -27,4 +27,8 @@ class ApplicationController < ActionController::API
       end
     end
   end
+
+  def pundit_user
+    @current_user
+  end
 end

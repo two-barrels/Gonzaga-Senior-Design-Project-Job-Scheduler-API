@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/spaces', to: 'spaces#index'
   get '/floors', to: 'floors#index'
   get '/spaces/get_floors', to: 'spaces#show'
+  get '/buildings', to: 'buildings#index'
 end

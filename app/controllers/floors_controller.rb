@@ -3,18 +3,18 @@
 class FloorsController < ApplicationController
   before_action :set_Floors, only: %i[show update destroy]
 
-  # GET /Spaces
+  # GET /Floors
   def index
     @Floors = Floor.all
-
     render json: @Floors
   end
 
-  # DELETE /Spaces/1
+  # DELETE /Floors/1
   def destroy
     authorize @Floors, :destroy?
     @Floors.destroy
   end
+
 
   private
 
@@ -24,7 +24,7 @@ class FloorsController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  def Floors_params
-    params.require(:Floors).permit(:name, :relationship)
+  def floors_params
+    params.require(:floor).permit(:floor_name)
   end
 end

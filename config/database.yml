@@ -23,6 +23,7 @@ production:
 test:
   adapter: postgresql
   database: rails_test
+  adapter: postgis
   username: rails
   password: password
   host: localhost

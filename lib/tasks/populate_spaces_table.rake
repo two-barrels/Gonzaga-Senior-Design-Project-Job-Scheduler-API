@@ -6,19 +6,28 @@ namespace :db do
     # Define an array of test space data
     space_one = { spaces_name: 'Conference Room 01', floor_id: 2, max_occupancy: 10,
                   description: 'a small conference room' }
-    Space.create(space_one)
+    space_one = Space.create(space_one)
 
-    # Create corresponding SpaceGeometry records
-    space_one_record = Space.find_by(spaces_name: 'Conference Room 01')
+    top_left = [40.0, -74.0]  # latitude, longitude
+    top_right = [40.0, -73.0] # latitude, longitude
+    bottom_right = [39.0, -73.0] # latitude, longitude
+    bottom_left = [39.0, -74.0] # latitude, longitude
 
-    # Define square shapes for each space
-    square_side_length = 10 # Define the side length of the square
+    # Create a linear ring representing the square
+    linear_ring_factory = RGeo::Geographic.simple_mercator_factory
+    linear_ring = linear_ring_factory.linear_ring([
+                                                    linear_ring_factory.point(*top_left),
+                                                    linear_ring_factory.point(*top_right),
+                                                    linear_ring_factory.point(*bottom_right),
+                                                    linear_ring_factory.point(*bottom_left),
+                                                    linear_ring_factory.point(*top_left) # Closing the ring
+                                                  ])
 
-    # Calculate coordinates for the squares (assuming squares are centered at origin)
-    square_one_coords = "(0 0, 0 #{square_side_length}, #{square_side_length} #{square_side_length}, #{square_side_length} 0, 0 0)"
+    # Create a polygon geometry from the linear ring
+    polygon_factory = RGeo::Geographic.spherical_factory(srid: 4326)
+    square = polygon_factory.polygon(linear_ring)
 
-    # Create PostGIS data with squares
-    SpaceGeometry.create(space_id: space_one_record.id, shape1: "POLYGON((#{square_one_coords}))")
+    SpaceGeometry.create(space_id: space_one.id, shape: square)
 
     puts 'Test space loaded successfully!'
   end

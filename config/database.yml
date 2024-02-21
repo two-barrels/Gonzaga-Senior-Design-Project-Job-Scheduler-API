@@ -10,6 +10,7 @@ development:
 development:
   adapter: postgresql
   database: job_scheduler
+  adapter: postgis
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: localhost

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SpacePolicy < ApplicationPolicy
-
   def index?
     true
   end
@@ -9,5 +8,4 @@ class SpacePolicy < ApplicationPolicy
   def show?
     true
   end
-
 end

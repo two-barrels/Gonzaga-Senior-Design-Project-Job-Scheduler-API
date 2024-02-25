@@ -9,15 +9,15 @@ class ApplicationPolicy
   end
 
   def index?
-    Rails.env.test? || user.admin?
+    Rails.env.test? || @user.admin?
   end
 
   def show?
-    Rails.env.test? || user.admin?
+    Rails.env.test? || @user.admin?
   end
 
   def create?
-    Rails.env.test? || user.admin?
+    Rails.env.test? || @user.admin?
   end
 
   def new?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    Rails.env.test? || user.admin?
+    Rails.env.test? || @user.admin?
   end
 
   def edit?
@@ -33,7 +33,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    Rails.env.test? || user.admin?
+    Rails.env.test? || @user.admin?
   end
 
   class Scope

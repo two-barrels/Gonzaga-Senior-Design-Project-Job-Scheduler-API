@@ -25,4 +25,8 @@ class ApplicationController < ActionController::API
       render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
     end
   end
+
+  def pundit_user
+    @current_user
+  end
 end

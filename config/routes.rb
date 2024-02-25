@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get '/floors', to: 'floors#index'
   get '/spaces/get_floors', to: 'spaces#show'
   get '/reservations/space/:space_id', to: 'reservations#get_reservation_by_space'
+  put '/reservations', to: 'reservations#update'
 end

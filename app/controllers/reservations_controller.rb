@@ -35,7 +35,7 @@ class ReservationsController < ApplicationController
 
   # PATCH/PUT /Reservations/1
   def update
-    if @Reservation.update(Reservation_params)
+    if @Reservation.update(reservation_params)
       render json: @Reservation
     else
       render json: @Reservation.errors, status: :unprocessable_entity

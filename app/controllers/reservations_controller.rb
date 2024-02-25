@@ -15,6 +15,12 @@ class ReservationsController < ApplicationController
     render json: @Reservation
   end
 
+  def get_reservation_by_space
+    @Reservations = Reservation.where(space_id: params[:space_id])
+
+    render json: @Reservations
+  end
+
   # POST /Reservations
   def create
     @Reservation = Reservation.new(reservation_params)
@@ -28,7 +34,7 @@ class ReservationsController < ApplicationController
 
   # PATCH/PUT /Reservations/1
   def update
-    if @Reservation.update(Reservation_params)
+    if @Reservation.update(reservation_params)
       render json: @Reservation
     else
       render json: @Reservation.errors, status: :unprocessable_entity

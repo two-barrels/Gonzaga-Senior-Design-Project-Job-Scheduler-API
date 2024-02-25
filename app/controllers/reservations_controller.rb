@@ -17,7 +17,6 @@ class ReservationsController < ApplicationController
 
   def get_reservation_by_space
     @Reservations = Reservation.where(space_id: params[:space_id])
-    puts @Reservations
 
     render json: @Reservations
   end
@@ -44,7 +43,6 @@ class ReservationsController < ApplicationController
 
   # DELETE /Reservations/1
   def destroy
-    @Reservation = Reservation.find(params[:id])
     @Reservation.destroy
   end
 

@@ -28,10 +28,10 @@ jobs:
           bundler-cache: true
       - name: Create rails credential key
         run: bin/rails credentials:edit
-      - name: Set up database schema
-        run: bin/rails db:schema:load
       - name: Run migrations
         run: bin/rails db:migrate
+      - name: Set up database schema
+        run: bin/rails db:schema:load
       - name: Run tests
         run: bin/rails test
 

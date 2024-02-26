@@ -6,8 +6,7 @@ services:
 
   postgres:
 
-    image: postgres:13.1-alpine
-
+    image: postgis/postgis:13-3.4
     volumes:
       - postgresql:/var/lib/postgresql/data:delegated
 

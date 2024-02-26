@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 20_240_217_224_531) do
     t.datetime "updated_at", null: false
   end
 
+  puts "trying to load geometry"
   create_table 'space_geometries', force: :cascade do |t|
     t.bigint 'space_id', null: false
     t.geometry 'shape', limit: { srid: 0, type: 'geometry' }

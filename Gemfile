@@ -50,6 +50,7 @@ end
 
 gem 'pg'
 
+gem 'activerecord-postgis-adapter'
 gem 'bcrypt'
 gem 'brakeman'
 gem 'bundler-audit'
@@ -58,4 +59,3 @@ gem 'devise-jwt', '~> 0.11.0'
 gem 'devise-jwt-cookie', git: 'https://github.com/drange11/devise-jwt-cookie'
 gem 'pundit'
 gem 'rubocop'
-gem 'activerecord-postgis-adapter'

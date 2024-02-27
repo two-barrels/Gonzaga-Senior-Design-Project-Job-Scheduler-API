@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAccountTable < ActiveRecord::Migration[7.0]
   def up
     create_table :accounts do |t|
@@ -6,6 +8,7 @@ class CreateAccountTable < ActiveRecord::Migration[7.0]
       t.string :email
     end
   end
+
   def down
     drop_table :accounts
   end

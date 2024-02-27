@@ -1,10 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
     3.1.2
 
@@ -16,8 +11,11 @@ Things you may want to cover:
     run `pg_ctl -D <path to database file> start` to start your database.
 
 * Database creation
-    run the psql command with the -U flag as whatever user owns your initialized database and the -d flag with the name of the database then run CREATE DATABASE job_scheduler.
-    Change the database.yml files username and password to use the username and password of your server.
+    `docker-compose up -d`
+    `rails db:create`
+    `rails db:migrate`
+    
+    
 
 * Database initialization
 
@@ -25,11 +23,8 @@ Things you may want to cover:
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
 
-* ...
-
 * NOTE
-I would recommend aliasing the postgres start command
+run the helpful_setup.sh file to create your env and add some command aliases
+`bash helpful_setup.sh`

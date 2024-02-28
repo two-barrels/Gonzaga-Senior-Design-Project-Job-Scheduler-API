@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   resources :posts
   resources :reservations
   resources :spaces
-  get '/users', to: 'users#index'
+  resources :assignments
+  get '/users', to: 'users#show'
   get '/spaces', to: 'spaces#index'
   get '/floors', to: 'floors#index'
   get '/spaces/get_floors', to: 'spaces#show'
+  post 'assignments/chage_admin_status', to: 'assignments#change_admin_status'
 end

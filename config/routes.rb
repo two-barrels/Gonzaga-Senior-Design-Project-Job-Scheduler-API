@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   resources :posts
   resources :reservations
   resources :spaces
-  get '/users', to: 'users#index'
+  resources :assignments
+  get '/users', to: 'users#show'
   get '/spaces', to: 'spaces#index'
   get '/floors', to: 'floors#index'
   get '/spaces/get_floors', to: 'spaces#show'
+  post 'assignments/change_admin_status', to: 'assignments#change_admin_status'
   get '/reservations/space/:space_id', to: 'reservations#get_reservation_by_space'
   put '/reservations', to: 'reservations#update'
 end

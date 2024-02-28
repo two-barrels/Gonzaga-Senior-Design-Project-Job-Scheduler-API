@@ -4,13 +4,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
-    @users = authorize User.all
+    @users = authorize User.includes(:assignments, :roles).all
 
-    render json: @users
+    render json: @users, include: { assignments: { include: :role }}
   end
 
+  # GET /Spaces/1
   def show
-    render json: @user
+    @users_names = User.select(:name)
+    render json: @users_name
   end
 
   def create

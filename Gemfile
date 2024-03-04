@@ -50,6 +50,7 @@ end
 
 gem 'pg'
 
+gem 'activerecord-postgis-adapter'
 gem 'bcrypt'
 gem 'brakeman'
 gem 'bundler-audit'

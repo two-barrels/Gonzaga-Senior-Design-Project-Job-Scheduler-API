@@ -14,10 +14,7 @@ module Users
     end
 
     def register_success
-      render json: {
-        message: 'Signed up sucessfully.',
-        user: current_user
-      }, status: :ok
+      render json: current_user, include: :roles
     end
 
     def register_failed

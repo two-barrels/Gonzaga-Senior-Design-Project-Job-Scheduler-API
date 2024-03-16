@@ -1,6 +1,7 @@
 FROM ruby:2.4.5-stretch
 
 # Update the package lists before installing.
+RUN echo help
 RUN apt-get update -qq
 
 # This installs

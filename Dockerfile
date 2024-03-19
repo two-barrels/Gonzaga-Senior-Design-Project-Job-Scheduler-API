@@ -9,6 +9,8 @@ RUN apk update && \
     vips \
     && rm -rf /var/cache/apk/*
 
+RUN apk add --no-cache git
+
 # Rails app lives here
 WORKDIR /rails
 

@@ -10,6 +10,7 @@ RUN apk update && \
     && rm -rf /var/cache/apk/*
 
 RUN apk add --no-cache git
+RUN apk add --no-cache postgresql-dev
 
 # Rails app lives here
 WORKDIR /rails

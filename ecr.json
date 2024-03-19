@@ -1,6 +1,7 @@
 {
     "family": "sample-fargate", 
     "networkMode": "awsvpc", 
+    "executionRoleArn": "arn:aws:iam::836403846680:role/ECS_to_ECR",
     "containerDefinitions": [
         {
             "name": "backend", 

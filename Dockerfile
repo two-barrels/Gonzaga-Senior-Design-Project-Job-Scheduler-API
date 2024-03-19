@@ -32,7 +32,7 @@ RUN bundle install
 COPY . .
 
 # Precompile bootsnap code for faster boot times
-RUN bundle exec rake assets:precompile RAILS_ENV=production
+RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile

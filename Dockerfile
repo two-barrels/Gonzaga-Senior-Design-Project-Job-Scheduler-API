@@ -20,7 +20,7 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler:2.2.27 && bundle install
+RUN gem install bundler && bundle install
 
 # Copy application code
 COPY . .

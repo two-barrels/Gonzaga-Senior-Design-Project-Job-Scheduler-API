@@ -20,6 +20,12 @@ class ReservationsController < ApplicationController
 
     render json: @Reservations
   end
+  def get_reservation_by_user
+    @Reservations = @current_user.reservations.includes(:space)
+    
+    render json: @Reservations, include: :space
+  end
+
 
   # POST /Reservations
   def create

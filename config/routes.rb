@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   post 'assignments/change_admin_status', to: 'assignments#change_admin_status'
   get '/reservations/space/:space_id', to: 'reservations#get_reservation_by_space'
   put '/reservations', to: 'reservations#update'
+  get '/dashboard', to: 'reservations#get_reservation_by_user'
 end

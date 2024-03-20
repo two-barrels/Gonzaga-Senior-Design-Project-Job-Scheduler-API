@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :assignments
   get '/users', to: 'users#show'
   get '/spaces', to: 'spaces#index'
+  get '/spaces/get_floor/:floor_id', to: 'spaces#get_space_geo_by_floor'
   get '/floors', to: 'floors#index'
   get '/spaces/get_floors', to: 'spaces#show'
   get '/buildings', to: 'buildings#index'

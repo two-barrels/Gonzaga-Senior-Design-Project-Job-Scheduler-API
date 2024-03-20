@@ -17,3 +17,4 @@
 /.env.yml
 /config/credentials.yml.enc
 /.vscode/*
+*.pem

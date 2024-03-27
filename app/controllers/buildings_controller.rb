@@ -1,5 +1,4 @@
 class BuildingsController < ApplicationController
-    before_action :set_spaces, only: %i[update destroy]
 
     # GET /Buildings
     def index
@@ -42,11 +41,6 @@ class BuildingsController < ApplicationController
     end
   
     private
-  
-    # Use callbacks to share common setup or constraints between actions.
-    def set_buildings
-      @Buildings = Building.find(params[:id])
-    end
   
     # Only allow a list of trusted parameters through.
     def building_params

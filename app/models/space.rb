@@ -2,4 +2,5 @@
 
 class Space < ApplicationRecord
   has_one :space_geometry
+  belongs_to :floor
 end

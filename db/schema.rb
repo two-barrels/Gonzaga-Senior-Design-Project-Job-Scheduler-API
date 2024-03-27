@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_18_213719) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_26_004505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -96,4 +96,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_213719) do
   add_foreign_key "assignments", "users"
   add_foreign_key "floors", "buildings"
   add_foreign_key "space_geometries", "spaces"
+  add_foreign_key "spaces", "floors"
 end

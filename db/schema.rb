@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2024_03_27_004136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "assignments", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -59,6 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_27_004136) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "space_geometries", force: :cascade do |t|
+    t.bigint "space_id", null: false
+    t.geometry "shape", limit: {:srid=>0, :type=>"geometry"}
+    t.index ["space_id"], name: "index_space_geometries_on_space_id"
+  end
+
   create_table "spaces", force: :cascade do |t|
     t.string "spaces_name"
     t.integer "floor_id"
@@ -82,4 +89,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_27_004136) do
 
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
+  add_foreign_key "space_geometries", "spaces"
 end

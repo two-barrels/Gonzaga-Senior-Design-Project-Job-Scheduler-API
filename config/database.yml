@@ -8,7 +8,7 @@ development:
   database: db/development.sqlite3
 
 development:
-  adapter: postgresql
+  adapter: postgis
   database: job_scheduler
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
@@ -19,8 +19,16 @@ production:
   <<: *default
   database: db/production.sqlite3
 
+production:
+  adapter: postgis
+  database: job_scheduler
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
+  port: 5432
+
 test:
-  adapter: postgresql
+  adapter: postgis
   database: rails_test
   username: rails
   password: password

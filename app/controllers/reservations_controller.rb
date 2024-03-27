@@ -21,8 +21,16 @@ class ReservationsController < ApplicationController
     render json: @Reservations
   end
 
+  def get_reservation_by_user
+    @Reservations = @current_user.reservations.includes(space: :floor)
+    
+    render json: @Reservations, include: {space: {include: :floor}}
+  end
+
   # POST /Reservations
   def create
+    reservation = reservation_params
+    reservation[:user_id] = @current_user.id
     @Reservation = Reservation.new(reservation_params)
 
     if @Reservation.save

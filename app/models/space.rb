@@ -2,4 +2,6 @@
 
 class Space < ApplicationRecord
   has_one :space_geometry
+  has_many :reservations
+  belongs_to :floor
 end

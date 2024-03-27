@@ -31,9 +31,9 @@ class ReservationsController < ApplicationController
   def create
     reservation = reservation_params
     reservation[:user_id] = @current_user.id
-    @Reservation = Reservation.new(reservation_params)
+    puts "DR TEST " + @current_user.to_s
 
-    if @Reservation.save
+    if @Reservation = Reservation.create!(reservation)
       render json: @Reservation, status: :created, location: @Reservation
     else
       render json: @Reservation.errors, status: :unprocessable_entity

@@ -23,8 +23,8 @@ class ReservationsController < ApplicationController
 
   def get_reservation_by_user
     @Reservations = @current_user.reservations.includes(space: :floor)
-    
-    render json: @Reservations, include: {space: {include: :floor}}
+
+    render json: @Reservations, include: { space: { include: :floor } }
   end
 
   # POST /Reservations
@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
     reservation = reservation_params
     reservation[:user_id] = @current_user.id
 
-    if @Reservation = Reservation.create!(reservation)
+    if (@Reservation = Reservation.create!(reservation))
       render json: @Reservation, status: :created, location: @Reservation
     else
       render json: @Reservation.errors, status: :unprocessable_entity

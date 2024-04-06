@@ -25,7 +25,7 @@ module Users
     def valid_username_password?
       if params[:user][:password].length < 8 && 
         params[:user][:email].length < 10 &&
-        raise Exception.new { "invalid user data" }
+        raise Exception, "invalid user data"
       end
     end
   end

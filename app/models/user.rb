@@ -7,6 +7,7 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
   has_many :assignments
   has_many :roles, through: :assignments
+  has_many :reservations
 
   def role?(role)
     roles.any? { |r| r.name == role }

@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
-    @users = authorize User.includes(:assignments, :roles).all
+    @users = authorize User.includes(:assignments, :roles).where.not(id: @current_user.id)
 
-    render json: @users, include: { assignments: { include: :role }}
+    render json: @users, include: { assignments: { include: :role } }
   end
 
   # GET /Spaces/1

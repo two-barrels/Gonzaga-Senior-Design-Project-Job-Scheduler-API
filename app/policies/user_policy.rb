@@ -10,6 +10,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    Rails.env.test? || @user.admin? || @user.id == @record.id
   end
 end

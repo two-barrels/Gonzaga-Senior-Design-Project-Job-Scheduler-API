@@ -5,6 +5,7 @@ require 'test_helper'
 class SpaceControllerTest < ActionDispatch::IntegrationTest
   setup do
     @Space1 = space(:one)
+    @Floor1 = floor(:one)
   end
 
   test 'should create space' do

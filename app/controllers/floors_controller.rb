@@ -1,30 +1,56 @@
 # frozen_string_literal: true
 
 class FloorsController < ApplicationController
-  before_action :set_Floors, only: %i[show update destroy]
+  before_action :set_floor, only: %i[show update destroy]
 
-  # GET /Spaces
+  # GET /Floors
+  def show
+    @floor = Floor.includes(:spaces)
+    render json: @floor.as_json(include: :spaces)
+  end
+
+  # GET /Floors/1
   def index
-    @Floors = Floor.all
-
-    render json: @Floors
+    @floor = Floor.includes(:spaces)
+    render json: @floor.as_json(include: :spaces)
   end
 
-  # DELETE /Spaces/1
+  # DELETE /Floors/1
   def destroy
-    authorize @Floors, :destroy?
-    @Floors.destroy
+    authorize @floor, :destroy?
+    @floor.destroy
   end
 
+  # POST /floors
+  def create
+    @floor = Floor.new(floors_params)
+    authorize @floor, :create?
+
+    if @floor.save
+      render json: @floor, status: :created, location: @floor
+    else
+      render json: @floor.errors, status: :unprocessable_entity
+    end
+  end
+
+    # PATCH/PUT /Floors
+    def update
+      authorize @floor, :update?
+      if @floor.update(floors_params)
+        render json: @floor
+      else
+        render json: @floor.errors, status: :unprocessable_entity
+      end
+    end
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_Floors
-    @Floors = Floors.find(params[:id])
+  def set_floor
+    @floor = Floor.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
-  def Floors_params
-    params.require(:Floors).permit(:name, :relationship)
+  def floors_params
+    params.permit(:floor_name, :building_id)
   end
 end

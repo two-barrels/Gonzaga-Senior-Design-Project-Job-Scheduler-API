@@ -4,15 +4,21 @@ class SpacesController < ApplicationController
   before_action :set_spaces, only: %i[update destroy]
 
   # GET /Spaces
-  def index
-    @Spaces = Space.all
-    render json: @Spaces
+  def get_space_geo_by_floor
+    @spaces = Space.where(floor_id: params[:floor_id]).includes(:space_geometry)
+    render json: @spaces.as_json(include: :space_geometry)
   end
+  
+  def index
+    @spaces = Space.includes(:space_geometry)
+    render json: @spaces.as_json(include: :space_geometry)
+  end
+  
 
   # GET /Spaces/1
   def show
     @Spaces_floors = Space.select(:floor_id).distinct.order(:floor_id)
-    render json: @Spaces_floors
+    render json: @Spaces_floors, include: :space_geometry
   end
 
   # POST /Spaces

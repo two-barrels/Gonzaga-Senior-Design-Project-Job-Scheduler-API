@@ -24,8 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_06_191819) do
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
+  create_table "buildings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "floors", force: :cascade do |t|
     t.string "floor_name"
+    t.integer "building_id"
   end
 
   create_table "jwt_denylist", force: :cascade do |t|
@@ -89,5 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_06_191819) do
 
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
+  add_foreign_key "floors", "buildings"
   add_foreign_key "space_geometries", "spaces"
+  add_foreign_key "spaces", "floors"
 end

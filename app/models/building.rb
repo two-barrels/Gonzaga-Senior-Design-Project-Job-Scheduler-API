@@ -1,3 +1,3 @@
 class Building < ApplicationRecord
-    has_many :floors, optional: true
+    has_many :floors
 end

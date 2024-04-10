@@ -1,5 +1,5 @@
 one:
   spaces_name: MyString
-  floor: ["one"]
+  floor_id: 1
   max_occupancy: 10
   description: "test description"

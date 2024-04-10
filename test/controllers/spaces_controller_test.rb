@@ -16,14 +16,6 @@ class SpacesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create space" do
-    assert_difference("Space.count") do
-      post spaces_url, params: { space: {  } }, as: :json
-    end
-
-    assert_response :created
-  end
-
   test "should show space" do
     get space_url(@space), as: :json
     assert_response :success

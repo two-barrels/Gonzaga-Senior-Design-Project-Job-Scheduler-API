@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
     reservation = reservation_params
     reservation[:user_id] = @current_user.id
 
-    if @reservation = Reservation.create!(reservation)
+    if (@reservation = Reservation.create!(reservation))
       render json: @reservation, status: :created, location: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity

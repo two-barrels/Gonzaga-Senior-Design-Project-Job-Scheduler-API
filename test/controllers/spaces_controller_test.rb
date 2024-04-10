@@ -2,7 +2,7 @@ require "test_helper"
 
 class SpacesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @space = spaces(:one)
+    @space = space(:one)
   end
 
   test 'should create space' do

@@ -1,11 +1,5 @@
 one:
   spaces_name: MyString
-  floor_id: 1
+  floor: one
   max_occupancy: 10
   description: "test description"
-
-two:
-  spaces_name: MyStringTwo
-  floor_id: 2
-  max_occupancy: 15
-  description: "test description two"

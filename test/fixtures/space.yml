@@ -1,4 +1,5 @@
 one:
+  id: 1
   spaces_name: MyString
   floor_id: 1
   max_occupancy: 10

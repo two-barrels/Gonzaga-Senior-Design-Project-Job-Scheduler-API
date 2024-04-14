@@ -8,8 +8,8 @@ class BuildingsController < ApplicationController
   
     # GET /Buildings/1
     def show
-      @Buildings_name = Building.select(:name)
-      render json: @Building_name
+      @building = Building.select(:name)
+      render json: @building
     end
   
     # POST /Buildings

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/floors/get_floors', to: 'floors#show'
   get '/spaces/get_floors', to: 'spaces#show'
   get '/buildings', to: 'buildings#index'
+  get '/buildings/:building_id/floors', to: 'floors#building_floors'
   post 'assignments/change_admin_status', to: 'assignments#change_admin_status'
   get '/reservations/space/:space_id', to: 'reservations#get_reservation_by_space'
   put '/reservations', to: 'reservations#update'

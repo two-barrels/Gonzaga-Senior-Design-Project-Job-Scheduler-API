@@ -27,6 +27,7 @@ class FloorsController < ApplicationController
     authorize @floor, :create?
 
     if @floor.save
+      Role.create!(type: 'floor', associated_id: @floor.id)
       render json: @floor, status: :created, location: @floor
     else
       render json: @floor.errors, status: :unprocessable_entity

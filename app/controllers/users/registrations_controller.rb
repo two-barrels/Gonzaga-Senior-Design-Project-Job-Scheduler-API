@@ -23,9 +23,9 @@ module Users
     end
 
     def valid_username_password?
-      if params[:user][:password].length < 8 && 
-        params[:user][:email].length < 10
-        raise "invalid user data"
+      if params[:user][:password].length < 8 &&
+         params[:user][:email].length < 10
+        raise 'invalid user data'
       end
     end
   end

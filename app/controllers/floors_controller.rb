@@ -33,15 +33,16 @@ class FloorsController < ApplicationController
     end
   end
 
-    # PATCH/PUT /Floors
-    def update
-      authorize @floor, :update?
-      if @floor.update(floors_params)
-        render json: @floor
-      else
-        render json: @floor.errors, status: :unprocessable_entity
-      end
+  # PATCH/PUT /Floors
+  def update
+    authorize @floor, :update?
+    if @floor.update(floors_params)
+      render json: @floor
+    else
+      render json: @floor.errors, status: :unprocessable_entity
     end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

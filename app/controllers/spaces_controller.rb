@@ -8,12 +8,11 @@ class SpacesController < ApplicationController
     @spaces = Space.where(floor_id: params[:floor_id]).includes(:space_geometry)
     render json: @spaces.as_json(include: :space_geometry)
   end
-  
+
   def index
     @spaces = Space.includes(:space_geometry)
     render json: @spaces.as_json(include: :space_geometry)
   end
-  
 
   # GET /Spaces/1
   def show

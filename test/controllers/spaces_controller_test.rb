@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class SpacesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -6,28 +6,29 @@ class SpacesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create space' do
-      post spaces_path, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: "Description"}, as: :json
+    post spaces_path, params: { spaces_name: 'Room', floor_id: 1, max_occupancy: 1, description: 'Description' },
+                      as: :json
 
-      assert_response :created
+    assert_response :created
   end
 
-  test "should get index" do
+  test 'should get index' do
     get spaces_url, as: :json
     assert_response :success
   end
 
-  test "should show space" do
+  test 'should show space' do
     get space_url(@space), as: :json
     assert_response :success
   end
 
-  test "should update space" do
-    patch space_url(@space), params: { space: {  } }, as: :json
+  test 'should update space' do
+    patch space_url(@space), params: { space: {} }, as: :json
     assert_response :success
   end
 
-  test "should destroy space" do
-    assert_difference("Space.count", -1) do
+  test 'should destroy space' do
+    assert_difference('Space.count', -1) do
       delete space_url(@space), as: :json
     end
 

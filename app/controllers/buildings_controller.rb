@@ -18,6 +18,7 @@ class BuildingsController < ApplicationController
       authorize @building, :create?
   
       if @building.save
+        Role.create!(type: 'building', associated_id: @building.id)
         render json: @building, status: :created, location: @building
       else
         render json: @building.errors, status: :unprocessable_entity

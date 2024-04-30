@@ -22,10 +22,11 @@ class ReservationsController < ApplicationController
   end
 
   def get_reservation_by_user
-    @reservations = @current_user.reservations.includes(:space)
+    @reservations = @current_user.reservations.includes(space: { floor: :building })
     
-    render json: @reservations, include: :space
+    render json: @reservations, include: { space: { include: { floor: { include: :building } } } }
   end
+  
 
   # POST /Reservations
   def create

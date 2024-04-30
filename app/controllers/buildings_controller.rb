@@ -27,12 +27,6 @@ class BuildingsController < ApplicationController
     end
   end
 
-  # GET /Buildings/1
-  def show
-    @building = Building.select(:name)
-    render json: @building
-  end
-
   # PATCH/PUT /Buildings/1
   def update
     authorize @building, :update?

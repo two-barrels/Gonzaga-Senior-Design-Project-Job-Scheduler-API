@@ -17,6 +17,7 @@ jobs:
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
           FRONTEND_URL: http://localhost:8080
+          jwt_secret_key: '0123456789'
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       RAILS_ENV: test

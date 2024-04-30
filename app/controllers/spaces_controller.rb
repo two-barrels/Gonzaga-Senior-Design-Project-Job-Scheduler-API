@@ -22,13 +22,16 @@ class SpacesController < ApplicationController
 
   # POST /Spaces
   def create
-    @Spaces = Space.new(spaces_params)
-    authorize @Spaces, :create?
+    @space = Space.new(spaces_params)
+    authorize @space, :create?
 
-    if @Spaces.save
-      render json: @Spaces, status: :created, location: @Spaces
+    if @space.save
+      unless Rails.env.test?
+        Role.create!(name: spaces_params[:space_name], reference_type: 'space', associated_id: @space.id)
+      end
+      render json: @space, status: :created, location: @space
     else
-      render json: @Spaces.errors, status: :unprocessable_entity
+      render json: @space.errors, status: :unprocessable_entity
     end
   end
 

@@ -25,45 +25,34 @@ class BuildingsController < ApplicationController
     else
       render json: @building.errors, status: :unprocessable_entity
     end
+  end
   
-    # GET /Buildings/1
-    def show
-      @building = Building.select(:name)
+  # GET /Buildings/1
+  def show
+    @building = Building.select(:name)
+    render json: @building
+  end
+
+  # PATCH/PUT /Buildings/1
+  def update
+    authorize @building, :update?
+    if @building.update(building_params)
       render json: @building
+    else
+      render json: @building.errors, status: :unprocessable_entity
     end
-  
-    # POST /Buildings
-    def create
-      @building = Building.new(building_params)
-      authorize @building, :create?
-  
-      if @building.save
-        render json: @building, status: :created, location: @building
-      else
-        render json: @building.errors, status: :unprocessable_entity
-      end
-    end
-  
-    # PATCH/PUT /Buildings/1
-    def update
-      authorize @building, :update?
-      if @building.update(building_params)
-        render json: @building
-      else
-        render json: @building.errors, status: :unprocessable_entity
-      end
-    end
-  
-    # DELETE /Buildings/1
-    def destroy
-      authorize @building, :destroy?
-      @building.destroy
-    end
-  
-    private
-    def set_building
-      @building = Building.find(params[:id])
-    end
+  end
+
+  # DELETE /Buildings/1
+  def destroy
+    authorize @building, :destroy?
+    @building.destroy
+  end
+
+  private
+  def set_building
+    @building = Building.find(params[:id])
+  end
 
   # Only allow a list of trusted parameters through.
   def building_params

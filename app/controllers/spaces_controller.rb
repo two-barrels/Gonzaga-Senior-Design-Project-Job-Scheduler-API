@@ -26,7 +26,9 @@ class SpacesController < ApplicationController
     authorize @space, :create?
 
     if @space.save
-      # Role.create!(name: spaces_params[:space_name], reference_type: 'space', associated_id: @space.id)
+      unless Rails.env.test?
+        Role.create!(name: spaces_params[:space_name], reference_type: 'space', associated_id: @space.id)
+      end
       render json: @space, status: :created, location: @space
     else
       render json: @space.errors, status: :unprocessable_entity

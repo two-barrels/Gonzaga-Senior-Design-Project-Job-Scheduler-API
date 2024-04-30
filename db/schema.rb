@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_06_191819) do
 
   create_table "space_geometries", force: :cascade do |t|
     t.bigint "space_id", null: false
-    t.geometry "shape", limit: {:srid=>0, :type=>"geometry"}
+    t.geometry "shape", limit: {srid: 0, type: "geometry"}
     t.index ["space_id"], name: "index_space_geometries_on_space_id"
   end
 

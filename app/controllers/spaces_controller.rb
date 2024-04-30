@@ -26,7 +26,7 @@ class SpacesController < ApplicationController
     authorize @space, :create?
 
     if @space.save
-      Role.create!(type: 'space', associated_id: @space.id)
+      Role.create!(reference_type: 'space', associated_id: @space.id)
       render json: @space, status: :created, location: @space
     else
       render json: @space.errors, status: :unprocessable_entity

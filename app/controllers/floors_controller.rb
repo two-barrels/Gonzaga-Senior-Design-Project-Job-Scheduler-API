@@ -22,7 +22,6 @@ class FloorsController < ApplicationController
     render json: @floors.as_json(include: :spaces)
   end
 
-
   # DELETE /Floors/1
   def destroy
     authorize @floor, :destroy?

@@ -26,7 +26,7 @@ class BuildingsController < ApplicationController
       render json: @building.errors, status: :unprocessable_entity
     end
   end
-  
+
   # GET /Buildings/1
   def show
     @building = Building.select(:name)
@@ -50,6 +50,7 @@ class BuildingsController < ApplicationController
   end
 
   private
+
   def set_building
     @building = Building.find(params[:id])
   end

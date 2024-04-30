@@ -1,12 +1,9 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `bin/rails
-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
+@@ -12,84 +10,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
@@ -24,15 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 20_240_427_194_907) do
     t.index ['user_id'], name: 'index_assignments_on_user_id'
   end
 
-  create_table 'buildings', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-  end
-
   create_table 'floors', force: :cascade do |t|
     t.string 'floor_name'
-    t.integer 'building_id'
   end
 
   create_table 'jwt_denylist', force: :cascade do |t|
@@ -61,12 +51,13 @@ ActiveRecord::Schema[7.0].define(version: 20_240_427_194_907) do
     t.boolean 'admin_block'
   end
 
-  create_table 'roles', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.text 'type'
-    t.integer 'associated_id'
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "type"
+    t.integer "associated_id"
+
   end
 
   create_table 'space_geometries', force: :cascade do |t|
@@ -98,7 +89,5 @@ ActiveRecord::Schema[7.0].define(version: 20_240_427_194_907) do
 
   add_foreign_key 'assignments', 'roles'
   add_foreign_key 'assignments', 'users'
-  add_foreign_key 'floors', 'buildings'
   add_foreign_key 'space_geometries', 'spaces'
-  add_foreign_key 'spaces', 'floors'
 end

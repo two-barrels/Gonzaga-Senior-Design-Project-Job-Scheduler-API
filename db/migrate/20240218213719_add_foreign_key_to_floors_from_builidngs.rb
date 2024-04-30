@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddForeignKeyToFloorsFromBuilidngs < ActiveRecord::Migration[7.0]
   def change
     add_column :floors, :building_id, :integer

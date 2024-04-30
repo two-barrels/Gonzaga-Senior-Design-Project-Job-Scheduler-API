@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BuildingsController < ApplicationController
     before_action :set_building, only: %i[update destroy]
     # GET /Buildings
@@ -45,8 +47,8 @@ class BuildingsController < ApplicationController
       @building = Building.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def building_params
-      params.permit(:name)
-    end
+  # Only allow a list of trusted parameters through.
+  def building_params
+    params.permit(:name)
+  end
 end

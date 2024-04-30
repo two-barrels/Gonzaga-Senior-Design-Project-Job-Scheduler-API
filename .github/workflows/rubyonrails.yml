@@ -39,7 +39,8 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
-        run: bin/rails test
+        run: echo $FRONTEND_URL /
+             bin/rails test
 
   lint:
     runs-on: ubuntu-latest

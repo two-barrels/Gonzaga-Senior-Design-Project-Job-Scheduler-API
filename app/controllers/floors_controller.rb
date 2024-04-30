@@ -15,6 +15,13 @@ class FloorsController < ApplicationController
     render json: @floor.as_json(include: :spaces)
   end
 
+  # GET /buildings/:building_id/floors
+  def building_floors
+    @building = Building.find(params[:building_id])
+    @floors = @building.floors
+    render json: @floors.as_json(include: :spaces)
+  end
+
   # DELETE /Floors/1
   def destroy
     authorize @floor, :destroy?

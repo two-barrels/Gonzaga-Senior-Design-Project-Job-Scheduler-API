@@ -10,8 +10,13 @@ class BuildingsController < ApplicationController
 
   # GET /Buildings/1
   def show
-    @Buildings_name = Building.select(:name)
-    render json: @Building_name
+    @buildings = Building.select(:name)
+    render json: @buildings
+  end
+
+  def buildings_by_ids
+    @buildings = Building.where(id: params[:building_ids])
+    render json: @buildings
   end
 
   # POST /Buildings
@@ -20,7 +25,7 @@ class BuildingsController < ApplicationController
     authorize @building, :create?
 
     if @building.save
-      Role.create!(type: 'building', associated_id: @building.id)
+      Role.create!(name: building_params[:name], reference_type: 'building', associated_id: @building.id)
       render json: @building, status: :created, location: @building
     else
       render json: @building.errors, status: :unprocessable_entity
@@ -41,6 +46,9 @@ class BuildingsController < ApplicationController
   def destroy
     authorize @building, :destroy?
     @building.destroy
+
+    role = Role.find_by(associated_id: params[:id])
+    role.destroy
   end
 
   private

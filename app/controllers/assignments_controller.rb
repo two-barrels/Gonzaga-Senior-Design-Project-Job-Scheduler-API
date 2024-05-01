@@ -5,14 +5,22 @@ class AssignmentsController < ApplicationController
 
   # GET /Assignments
   def index
-    @Assignments = Assignment.all
-    render json: @Assignments
+    @Assignments = Assignment.includes(:role).all
+    render json: @Assignments, include: :role
   end
 
+  def assignments_by_user
+    @assignments = @current_user.assignments.includes(:roles)
+    puts @assignments.to_s
+    puts @assignments.roles
+    render json: @assignments, include: :roles
+  end
+  
   # GET /Assignments/1
   def show
-    @Assignments_floors = Assignment.find_by(user_id: params[:id])
-    render json: @Assignments_ids
+    @assignments = Assignment.where(user_id: params[:id]).where.not(role_id: [1, 2])
+    puts "test"
+    render json: @assignments
   end
 
   # POST /Assignments
@@ -29,10 +37,8 @@ class AssignmentsController < ApplicationController
 
   # CUSTOM ROUTE
   def change_admin_status
-    # pass id
-    # fetch user from the id
-    #
     @user = User.find(params[:id])
+    # authorize @Assignments, :update?
     if @user.admin?
       Assignment.find_by(user_id: params[:id], role_id: Role.find_by(name: 'Admin').id).destroy
     else

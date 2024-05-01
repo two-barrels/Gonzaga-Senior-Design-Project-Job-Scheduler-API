@@ -9,6 +9,16 @@ class FloorsController < ApplicationController
     render json: @floor.as_json(include: :spaces)
   end
 
+  def by_building
+    @floor = Floor.where(building_id: params[:building_ids])
+    render json: @floor
+  end
+
+  def floors_by_ids
+    @floors = Floor.where(id: params[:floor_ids])
+    render json: @floors
+  end
+
   # GET /Floors/1
   def index
     @floor = Floor.includes(:spaces)
@@ -26,6 +36,9 @@ class FloorsController < ApplicationController
   def destroy
     authorize @floor, :destroy?
     @floor.destroy
+    
+    role = Role.find_by(associated_id: params[:id])
+    role.destroy
   end
 
   # POST /floors
@@ -34,7 +47,8 @@ class FloorsController < ApplicationController
     authorize @floor, :create?
 
     if @floor.save
-      Role.create!(type: 'floor', associated_id: @floor.id)
+      Role.create!(name: floors_params[:floor_name], reference_type: 'floor', associated_id: @floor.id)
+      # Role.create!(type: 'floor', associated_id: @floor.id)
       render json: @floor, status: :created, location: @floor
     else
       render json: @floor.errors, status: :unprocessable_entity

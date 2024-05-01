@@ -8,13 +8,6 @@ class AssignmentsController < ApplicationController
     @Assignments = Assignment.includes(:role).all
     render json: @Assignments, include: :role
   end
-
-  def assignments_by_user
-    @assignments = @current_user.assignments.includes(:roles)
-    puts @assignments.to_s
-    puts @assignments.roles
-    render json: @assignments, include: :roles
-  end
   
   # GET /Assignments/1
   def show
@@ -60,6 +53,11 @@ class AssignmentsController < ApplicationController
   def destroy
     authorize @assignments, :destroy?
     @assignments.destroy
+  end
+
+  def assignments_by_user
+    @assignments = @current_user.assignments.includes(:role)
+    render json: @assignments, include: :role
   end
 
   private

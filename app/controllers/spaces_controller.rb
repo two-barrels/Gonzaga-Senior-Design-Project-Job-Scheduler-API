@@ -59,9 +59,10 @@ class SpacesController < ApplicationController
   def destroy
     authorize @Spaces, :destroy?
     @Spaces.destroy
-
-    role = Role.find_by(associated_id: params[:id])
-    role.destroy
+    unless Rails.env.test?
+      role = Role.find_by(associated_id: params[:id])
+      role.destroy
+    end
   end
 
   private

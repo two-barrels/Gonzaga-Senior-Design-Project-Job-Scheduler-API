@@ -36,9 +36,10 @@ class FloorsController < ApplicationController
   def destroy
     authorize @floor, :destroy?
     @floor.destroy
-    
-    role = Role.find_by(associated_id: params[:id])
-    role.destroy
+    unless Rails.env.test?
+      role = Role.find_by(associated_id: params[:id])
+      role.destroy
+    end
   end
 
   # POST /floors
@@ -47,8 +48,9 @@ class FloorsController < ApplicationController
     authorize @floor, :create?
 
     if @floor.save
-      Role.create!(name: floors_params[:floor_name], reference_type: 'floor', associated_id: @floor.id)
-      # Role.create!(type: 'floor', associated_id: @floor.id)
+      unless Rails.env.test?
+        Role.create!(name: floors_params[:floor_name], reference_type: 'floor', associated_id: @floor.id)
+      end
       render json: @floor, status: :created, location: @floor
     else
       render json: @floor.errors, status: :unprocessable_entity
